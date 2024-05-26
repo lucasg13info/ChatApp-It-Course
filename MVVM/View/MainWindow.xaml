@@ -22,7 +22,8 @@
                      DockPanel.Dock="Top"/>
             <Button Height="25"
                     DockPanel.Dock="Top"
-                    Content="Connect"/>
+                    Content="Connect"
+                    Command="{Binding ConnectToServerCommand}"/>
             <ListView/>
         </DockPanel>
 
@@ -34,7 +35,8 @@
                          Width="545"
                          VerticalContentAlignment="Center"/>
                 <Button Width="55"
-                        Content="Send" />
+                        Content="Send" 
+                        />
             </StackPanel>
         </StackPanel>
 
