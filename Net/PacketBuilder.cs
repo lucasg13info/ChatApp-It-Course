@@ -18,7 +18,7 @@ namespace ChatClient.Net
             _stream.Write(BitConverter.GetBytes(v), 0, sizeof(int));
         }
 
-        internal void WriteString(string str)
+        internal void WriteMessage(string str)
         {
             WriteOpCode(str.Length);
             byte[] stringBytes = Encoding.UTF8.GetBytes(str);
@@ -34,6 +34,16 @@ namespace ChatClient.Net
         internal byte[] GetPacketBytes()
         {
             return _stream.ToArray();
+        }
+
+        internal void WriteMessage()
+        {
+            throw new NotImplementedException();
+        }
+
+        internal void WriteOpcode(int v)
+        {
+            throw new NotImplementedException();
         }
     }
 }
