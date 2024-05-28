@@ -1,6 +1,6 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
+using ChatClient.Net.IO;
+
 using System.Net.Sockets;
 using System.Text;
 using System.Threading.Tasks;
@@ -9,17 +9,26 @@ namespace ChatClient.Net
 {
     internal class Server
     {
-        TcpClient client;
+        TcpClient _client;
 
         public Server()
         {
-            client = new TcpClient();
+            _client = new TcpClient();
         }
 
-        public void ConnectToServer()
+        public void ConnectToServer(string username)
         {
-            if(!client.Connected) {
-                client.Connect("127.0.0.1", 7891);            
+            if(!_client.Connected)
+            {
+                _client.Connect("127.0.0.1", 7891);
+                var connectPacket = new PacketBuilder();
+                connectPacket.WriteOpCode(0);
+                connectPacket.WriteString(username);
+                _client.Client.Send(connectPacket.GetPacketBytes());
+
+
+
+                
             }
         }
     }

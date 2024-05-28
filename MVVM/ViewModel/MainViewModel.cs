@@ -12,10 +12,12 @@ namespace ChatClient.MVVM.ViewModel
     {
         public RelayCommand ConnectToServerCommand { get; set; }
 
+        public string Username { get; set; }
+
         private Server server;
         public MainViewModel() { 
             server = new Server();
-            ConnectToServerCommand = new RelayCommand(o => server.ConnectToServer());
+            ConnectToServerCommand = new RelayCommand(o => server.ConnectToServer(Username), o => !string.IsNullOrEmpty(Username));
         
         }
     }
